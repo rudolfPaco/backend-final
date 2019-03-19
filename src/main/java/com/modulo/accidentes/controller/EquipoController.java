@@ -4,6 +4,7 @@ import com.modulo.accidentes.dto.EquipoDto;
 import com.modulo.accidentes.model.Equipo;
 import com.modulo.accidentes.service.EquipoService;
 import com.modulo.accidentes.service.GenericService;
+import org.glassfish.jersey.media.multipart.FormDataContentDisposition;
 import org.glassfish.jersey.media.multipart.FormDataParam;
 import org.springframework.stereotype.Controller;
 
@@ -29,7 +30,8 @@ public class EquipoController extends GenericController<Equipo, EquipoDto> {
     @Consumes(MediaType.MULTIPART_FORM_DATA)
     @Produces(MediaType.APPLICATION_JSON)
     public Response uploadFile(@PathParam("id") String id,
-                               @FormDataParam("file") InputStream file) {
+                               @FormDataParam("file") InputStream file,
+                               @FormDataParam("file") FormDataContentDisposition fileDisposition) {
         equipoService.saveImage(Long.valueOf(id), file);
         return Response.ok("Data uploaded successfully !!").build();
     }
@@ -39,7 +41,6 @@ public class EquipoController extends GenericController<Equipo, EquipoDto> {
     public List<EquipoDto> getAll() {
         return super.getAll();
     }
-
 
     @Override
     protected GenericService getService() {

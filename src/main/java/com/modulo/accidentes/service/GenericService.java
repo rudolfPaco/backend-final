@@ -14,6 +14,8 @@ public interface GenericService<T extends ModelBase> {
 
     T save(T model);
 
+    T update(T model);
+
     T patch(DtoBase dto, T model);
 
     List<T> saveAll(Iterable<T> models);

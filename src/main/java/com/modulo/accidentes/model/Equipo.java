@@ -1,7 +1,5 @@
 package com.modulo.accidentes.model;
 
-import com.fasterxml.jackson.annotation.JsonFormat;
-
 import javax.persistence.*;
 import java.io.Serializable;
 import java.util.ArrayList;
@@ -16,7 +14,6 @@ public class Equipo extends ModelBase implements Serializable {
 
     private String nombre;
     private String categoria;
-    @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "dd-MM-yyyy")
     private Date fechaAdquisicion;
     private int cantidad;
     @Lob

@@ -62,7 +62,7 @@ public abstract class GenericController<E extends ModelBase, D extends DtoBase<E
 
     @PUT
     public D update(@RequestBody D element) {
-        return toDto((E) getService().save(toModel(element)));
+        return toDto((E) getService().update(toModel(element)));
     }
 
     /**

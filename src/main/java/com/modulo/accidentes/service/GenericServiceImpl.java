@@ -54,6 +54,13 @@ public abstract class GenericServiceImpl<T extends ModelBase> implements Generic
     }
 
     @Override
+    public T update(T model) {
+        validateSave(model);
+        T t = getRepository().saveAndFlush(model);
+        return findById(t.getId());
+    }
+
+    @Override
     public T patch(DtoBase dto, T model) {
         processDtoToDomainPatch(dto, model);
         return save(model);

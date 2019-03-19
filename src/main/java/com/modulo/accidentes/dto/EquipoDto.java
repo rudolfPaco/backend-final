@@ -4,6 +4,7 @@ import com.modulo.accidentes.model.Equipo;
 import org.apache.tomcat.util.codec.binary.Base64;
 import org.modelmapper.ModelMapper;
 
+import java.text.SimpleDateFormat;
 import java.util.Date;
 
 public class EquipoDto extends DtoBase<Equipo> {
@@ -74,6 +75,12 @@ public class EquipoDto extends DtoBase<Equipo> {
             String imageStr = Base64.encodeBase64String(bytes);
             setImage(imageStr);
         }
+        //setFechaAdquisicion(toStringDate(equipo.getFechaAdquisicion()));
         return this;
+    }
+
+    private String toStringDate(Date date) {
+        SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd");
+        return format.format(date);
     }
 }

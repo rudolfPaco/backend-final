@@ -19,18 +19,17 @@ public class EquipoServiceImpl extends GenericServiceImpl<Equipo> implements Equ
 
     @Override
     protected GenericRepository<Equipo> getRepository() {
-
         return equipoRepository;
     }
 
 
     @Override
     public void saveImage(Long id, InputStream file) {
-        Equipo itemPersisted = findById(id);
+        Equipo equipoPersistente = findById(id);
         try {
             Byte[] bytes = ImageUtils.inputStreamToByteArray(file);
-            itemPersisted.setImage(bytes);
-            getRepository().save(itemPersisted);
+            equipoPersistente.setImage(bytes);
+            getRepository().save(equipoPersistente);
         } catch (IOException e) {
             logger.error("Error reading file", e);
             e.printStackTrace();
