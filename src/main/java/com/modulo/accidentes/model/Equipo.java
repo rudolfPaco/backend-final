@@ -16,8 +16,6 @@ public class Equipo extends ModelBase implements Serializable {
     private String categoria;
     private Date fechaAdquisicion;
     private int cantidad;
-    @Lob
-    private Byte[] image;
     private String estado;
 
 
@@ -71,13 +69,5 @@ public class Equipo extends ModelBase implements Serializable {
 
     public void setDotaciones(List<Dotacion> dotaciones) {
         this.dotaciones = dotaciones;
-    }
-
-    public Byte[] getImage() {
-        return image;
-    }
-
-    public void setImage(Byte[] image) {
-        this.image = image;
     }
 }

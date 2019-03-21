@@ -5,8 +5,6 @@ import com.modulo.accidentes.repositories.EquipoRepository;
 import com.modulo.accidentes.repositories.GenericRepository;
 import org.springframework.stereotype.Service;
 
-import java.io.IOException;
-import java.io.InputStream;
 
 @Service
 public class EquipoServiceImpl extends GenericServiceImpl<Equipo> implements EquipoService {
@@ -20,19 +18,5 @@ public class EquipoServiceImpl extends GenericServiceImpl<Equipo> implements Equ
     @Override
     protected GenericRepository<Equipo> getRepository() {
         return equipoRepository;
-    }
-
-
-    @Override
-    public void saveImage(Long id, InputStream file) {
-        Equipo equipoPersistente = findById(id);
-        try {
-            Byte[] bytes = ImageUtils.inputStreamToByteArray(file);
-            equipoPersistente.setImage(bytes);
-            getRepository().save(equipoPersistente);
-        } catch (IOException e) {
-            logger.error("Error reading file", e);
-            e.printStackTrace();
-        }
     }
 }

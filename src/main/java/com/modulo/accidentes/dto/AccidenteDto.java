@@ -1,28 +1,17 @@
-package com.modulo.accidentes.model;
+package com.modulo.accidentes.dto;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.modulo.accidentes.model.Accidente;
 
-import javax.persistence.*;
-import java.io.Serializable;
 import java.util.Date;
 
-@Entity
-@Inheritance(strategy = InheritanceType.SINGLE_TABLE)
-@Table(name = "accidente")
-public class Accidente extends ModelBase implements Serializable {
+public class AccidenteDto extends DtoBase<Accidente> {
 
-    @Temporal(TemporalType.TIMESTAMP)
     private Date fecha;
     private String lugar;
     private String tipo;
     private String descripcion;
     private String estado;
-
-    //muchos accidentes puede tener un empleadoA
-    @ManyToOne(fetch = FetchType.EAGER)
-    @JoinColumn(name = "empleado_id")
-    @JsonIgnore
-    private Empleado empleadoA;
+    private long empleado_id;
 
     public Date getFecha() {
         return fecha;
@@ -64,11 +53,11 @@ public class Accidente extends ModelBase implements Serializable {
         this.estado = estado;
     }
 
-    public Empleado getEmpleadoA() {
-        return empleadoA;
+    public long getEmpleado_id() {
+        return empleado_id;
     }
 
-    public void setEmpleadoA(Empleado empleadoA) {
-        this.empleadoA = empleadoA;
+    public void setEmpleado_id(long empleado_id) {
+        this.empleado_id = empleado_id;
     }
 }
