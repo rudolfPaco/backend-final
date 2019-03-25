@@ -19,8 +19,8 @@ public class Accidente extends ModelBase implements Serializable {
     private String estado;
 
     //muchos accidentes puede tener un empleadoA
-    @ManyToOne(fetch = FetchType.EAGER)
-    @JoinColumn(name = "empleado_id")
+    @ManyToOne
+    @JoinColumn(name = "empleado_id", insertable = true)
     @JsonIgnore
     private Empleado empleadoA;
 

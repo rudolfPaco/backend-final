@@ -1,6 +1,7 @@
 package com.modulo.accidentes.dto;
 
 import com.modulo.accidentes.model.Dotacion;
+import org.modelmapper.ModelMapper;
 
 import java.util.Date;
 
@@ -59,5 +60,13 @@ public class DotacionDto extends DtoBase<Dotacion> {
 
     public void setEquipo_id(long equipo_id) {
         this.equipo_id = equipo_id;
+    }
+
+    @Override
+    public DotacionDto toDto(Dotacion dotacion, ModelMapper mapper) {
+        super.toDto(dotacion, mapper);
+        setEquipo_id(dotacion.getEquipoD().getId());
+        setEmpleado_id(dotacion.getEmpleadoD().getId());
+        return this;
     }
 }

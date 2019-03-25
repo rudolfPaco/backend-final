@@ -1,5 +1,8 @@
 package com.modulo.accidentes.model;
 
+import com.modulo.accidentes.dto.EquipoDto;
+import org.modelmapper.ModelMapper;
+
 import javax.persistence.*;
 import java.io.Serializable;
 import java.util.ArrayList;
@@ -7,7 +10,6 @@ import java.util.Date;
 import java.util.List;
 
 @Entity
-@Inheritance(strategy = InheritanceType.SINGLE_TABLE)
 @Table(name = "equipo")
 public class Equipo extends ModelBase implements Serializable {
 
@@ -17,6 +19,8 @@ public class Equipo extends ModelBase implements Serializable {
     private Date fechaAdquisicion;
     private int cantidad;
     private String estado;
+    @Lob
+    private Byte[] image;
 
 
     @OneToMany(mappedBy = "equipoD", cascade = CascadeType.ALL, orphanRemoval = true)
@@ -69,5 +73,17 @@ public class Equipo extends ModelBase implements Serializable {
 
     public void setDotaciones(List<Dotacion> dotaciones) {
         this.dotaciones = dotaciones;
+    }
+
+    public Byte[] getImage() {
+        return image;
+    }
+
+    public void setImage(Byte[] image) {
+        this.image = image;
+    }
+
+    public ModelBase toDomain(EquipoDto element, ModelMapper mapper) {
+        return super.toDomain(element, mapper);
     }
 }

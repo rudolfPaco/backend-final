@@ -18,11 +18,11 @@ public class Empleado extends ModelBase implements Serializable {
     private Date fechaContratacion;
 
     //un empleado puede tener muchos accidentes
-    @OneToMany(mappedBy = "empleadoA", cascade = CascadeType.ALL, orphanRemoval = true)
+    @OneToMany(mappedBy = "empleadoA", cascade = CascadeType.ALL)
     private List<Accidente> accidentes = new ArrayList<>();
 
     //un empleado puede tener muchas dotaciones
-    @OneToMany(mappedBy = "empleadoD", cascade = CascadeType.ALL, orphanRemoval = true)
+    @OneToMany(mappedBy = "empleadoD", cascade = CascadeType.ALL)
     private List<Dotacion> dotaciones = new ArrayList<>();
 
 

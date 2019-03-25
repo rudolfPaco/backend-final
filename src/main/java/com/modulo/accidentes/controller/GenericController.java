@@ -55,6 +55,10 @@ public abstract class GenericController<E extends ModelBase, D extends DtoBase<E
         return toDto(getService().findAll());
     }
 
+    public List<E> getAllE() {
+        return getService().findAll();
+    }
+
     @POST
     public D save(@RequestBody D element) {
         return toDto((E) getService().save(toModel(element)));

@@ -33,7 +33,7 @@ public class EmpleadoController extends GenericController<Empleado, EmpleadoDto>
     @POST
     public Response create(@RequestBody Empleado empleado) {
         empleadoService.save(empleado);
-        return Response.ok("se creo un nuevo empleado !!").build();
+        return Response.ok("se guardo el empleado !!").build();
     }
 
     @Path("/update")

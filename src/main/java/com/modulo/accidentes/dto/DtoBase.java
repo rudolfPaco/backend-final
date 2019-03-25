@@ -11,7 +11,7 @@ import java.util.stream.Collectors;
 
 public class DtoBase<E extends ModelBase> {
 
-    private Long id;
+    private long id;
 
     protected void beforeConversion(E element, ModelMapper mapper) {
         // Do nothing
@@ -48,7 +48,7 @@ public class DtoBase<E extends ModelBase> {
         }).sorted(Comparator.comparing(DtoBase::getId)).collect(Collectors.toList());
     }
 
-    public Long getId() {
+    public long getId() {
         return id;
     }
 

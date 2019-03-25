@@ -24,9 +24,10 @@ public class DotacionController extends GenericController<Dotacion, DotacionDto>
     }
 
     @Override
+    @Path("/all ")
     @GET
     public List<DotacionDto> getAll() {
-        return super.getAll();
+        return dotacionService.getAllDotaciones();
     }
 
     @Path("/create")

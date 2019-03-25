@@ -1,6 +1,8 @@
 package com.modulo.accidentes.dto;
 
 import com.modulo.accidentes.model.Equipo;
+import org.apache.tomcat.util.codec.binary.Base64;
+import org.modelmapper.ModelMapper;
 
 import java.util.Date;
 
@@ -11,6 +13,7 @@ public class EquipoDto extends DtoBase<Equipo> {
     private Date fechaAdquisicion;
     private int cantidad;
     private String estado;
+    private String image;
 
     public String getNombre() {
         return nombre;
@@ -50,5 +53,27 @@ public class EquipoDto extends DtoBase<Equipo> {
 
     public void setEstado(String estado) {
         this.estado = estado;
+    }
+
+    public String getImage() {
+        return image;
+    }
+
+    public void setImage(String image) {
+        this.image = image;
+    }
+
+    @Override
+    public EquipoDto toDto(Equipo equipo, ModelMapper mapper) {
+        super.toDto(equipo, mapper);
+        if (equipo.getImage() != null) {
+            byte[] bytes = new byte[equipo.getImage().length];
+            for (int i = 0; i < equipo.getImage().length; i++) {
+                bytes[i] = equipo.getImage()[i];
+            }
+            String imageStr = Base64.encodeBase64String(bytes);
+            setImage(imageStr);
+        }
+        return this;
     }
 }

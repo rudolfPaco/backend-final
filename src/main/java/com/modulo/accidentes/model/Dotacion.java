@@ -19,13 +19,13 @@ public class Dotacion extends ModelBase implements Serializable {
     private String observacion;
 
     //muchos dotaciones puede tener un empleadoD
-    @ManyToOne(fetch = FetchType.LAZY)
+    @ManyToOne
     @JoinColumn(name = "empleado_id")
     @JsonIgnore
     private Empleado empleadoD;
 
     //muchas dotaciones puede realizar un equipo
-    @ManyToOne(fetch = FetchType.LAZY)
+    @ManyToOne
     @JoinColumn(name = "equipo_id")
     @JsonIgnore
     private Equipo equipoD;

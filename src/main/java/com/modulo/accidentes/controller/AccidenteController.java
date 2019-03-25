@@ -29,6 +29,12 @@ public class AccidenteController extends GenericController<Accidente, AccidenteD
         return super.getAll();
     }
 
+    @Path("/E")
+    @GET
+    public List<Accidente> getAllE() {
+        return super.getAllE();
+    }
+
     @Path("/create")
     @POST
     public Response create(@RequestBody AccidenteDto accidenteDto) {

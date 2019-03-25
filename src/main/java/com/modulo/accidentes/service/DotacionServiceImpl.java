@@ -8,6 +8,9 @@ import com.modulo.accidentes.repositories.EquipoRepository;
 import com.modulo.accidentes.repositories.GenericRepository;
 import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
+import java.util.List;
+
 @Service
 public class DotacionServiceImpl extends GenericServiceImpl<Dotacion> implements DotacionService {
 
@@ -19,6 +22,17 @@ public class DotacionServiceImpl extends GenericServiceImpl<Dotacion> implements
         this.equipoRepository = equipoRepository;
         this.dotacionRepository = dotacionRepository;
         this.empleadoRepository = empleadoRepository;
+    }
+
+    @Override
+    public List<DotacionDto> getAllDotaciones() {
+        List<DotacionDto> lista = new ArrayList<>();
+        List<Dotacion> listaDotacion = dotacionRepository.findAll();
+        for (Dotacion dotacion : listaDotacion) {
+            DotacionDto dotacionDto = new DotacionDto();
+            lista.add(dotacionDto.toDto(dotacion, modelMapper));
+        }
+        return lista;
     }
 
     @Override
