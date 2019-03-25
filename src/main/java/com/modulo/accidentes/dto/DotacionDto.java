@@ -65,8 +65,6 @@ public class DotacionDto extends DtoBase<Dotacion> {
     @Override
     public DotacionDto toDto(Dotacion dotacion, ModelMapper mapper) {
         super.toDto(dotacion, mapper);
-        setEquipo_id(dotacion.getEquipoD().getId());
-        setEmpleado_id(dotacion.getEmpleadoD().getId());
         return this;
     }
 }
